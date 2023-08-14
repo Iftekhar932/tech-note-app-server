@@ -1,16 +1,20 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 
 const path = require("path");
 const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
 const PORT = process.env.PORT || 3500;
 const { logger } = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
- const cookieParser = require('cookie-parser')
+const cookieParser = require("cookie-parser");
 
-app.use(cors());
+console.log(process.env.NODE_ENV);
 
-app.use(cookieParser()) 50:47
+app.use(cors(corsOptions));
+
+app.use(cookieParser());
 
 app.use(express.json());
 
